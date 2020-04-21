@@ -20,3 +20,36 @@ Out[43]:
 0  1   2   3   4   hello
 1  5   6   7   8   world
 2  9  10  11  12     foo
+In [7]: b=pd.read_csv('ex1.csv',index_col='message')可以通过对index_col传入参数，来指定索引
+In [8]: b
+Out[8]:
+         a   b   c   d
+message
+hello    1   2   3   4
+world    5   6   7   8
+foo      9  10  11  12
+In [9]: c=pd.read_csv('csv_mindex.csv')
+In [10]: c
+Out[10]:
+  key1 key2  value1  value2
+0  one    a       1       2
+1  one    b       3       4
+2  one    c       5       6
+3  one    d       7       8
+4  two    a       1       2
+5  two    b       3       4
+6  two    c       5       6
+7  two    d       7       8
+In [11]: d=pd.read_csv('csv_mindex.csv',index_col=['key1','key2'])#通过index_col来实现分层索引
+In [12]: d
+Out[12]:
+           value1  value2
+key1 key2
+one  a          1       2
+     b          3       4
+     c          5       6
+     d          7       8
+two  a          1       2
+     b          3       4
+     c          5       6
+     d          7       8
