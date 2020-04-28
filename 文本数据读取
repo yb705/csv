@@ -53,3 +53,31 @@ two  a          1       2
      b          3       4
      c          5       6
      d          7       8
+In [3]: pd.read_csv("examples\ex4.csv")
+Out[3]:
+                                                                      # hey!
+a                                                  b        c   d    message
+# just wanted to make things more difficult for... NaN      NaN NaN      NaN
+# who reads CSV files with computers                anyway? NaN NaN      NaN
+1                                                  2        3   4      hello
+5                                                  6        7   8      world
+9                                                  10       11  12       foo
+In [4]: pd.read_csv("examples\ex4.csv",skiprows=[0,2,3])#参数skiprows跳行读取数值
+Out[4]:
+   a   b   c   d message
+0  1   2   3   4   hello
+1  5   6   7   8   world
+2  9  10  11  12     foo
+In [5]: pd.read_csv("examples\ex5.csv")
+Out[5]:
+  something  a   b     c   d message
+0       one  1   2   3.0   4     NaN
+1       two  5   6   NaN   8   world
+2     three  9  10  11.0  12     foo
+In [9]: correct={'message':['world','foo'],'a':[5,9]}
+In [10]: pd.read_csv("examples\ex5.csv",na_values=correct)#参数na_values来指定缺失值
+Out[10]:
+  something    a   b     c   d  message
+0       one  1.0   2   3.0   4      NaN
+1       two  NaN   6   NaN   8      NaN
+2     three  NaN  10  11.0  12      NaN
